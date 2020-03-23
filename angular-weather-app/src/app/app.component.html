@@ -1,0 +1,32 @@
+<div class="container p-4" role="main">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card card-body bg-dark">
+        <img src="http://openweathermap.org/img/wn/02d@2x.png" alt="" class="mx-auto">
+
+        <form (submit)="submitLocation(cityName, countryCode)">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="City Name" #cityName>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Country Code" #countryCode>
+          </div>
+          <button class="btn btn-block btn-success mt-3">
+            Get Weather
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="weather" class="card card-body">
+        <p>Temperature: {{ weather.main.temp }}°C</p>
+        <p>Latitude: {{ weather.coord.lat }}°</p>
+        <p>Longitude: {{ weather.coord.lon }}°</p>
+        <p>Humidity: {{ weather.main.humidity }}%</p>
+        <p>Pressure: {{ weather.main.pressure }}hPa</p>
+        <p>Description: {{ weather.weather[0].description }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
